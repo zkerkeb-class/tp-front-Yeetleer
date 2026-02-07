@@ -35,6 +35,8 @@
 .poke-image-background{
     background-color: blanchedalmond;
     margin:8px;
+    width: 100px;
+    height: 100px;
 }
 
 .poke-type-font{
