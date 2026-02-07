@@ -8,11 +8,14 @@ const PokeList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("https://pokeapi.co/api/v2/pokemon?limit=30")
+        const URL_API = "http://localhost:3000/pokemons";
+        const ancien_URL_au_cas_ou = "https://pokeapi.co/api/v2/pokemon?/limit=30";
+
+        fetch(URL_API)
             .then((response) => response.json())
             .then((data) => {
                 console.log("Données reçues:", data);
-                setPokemons(data.results);
+                setPokemons(data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -29,8 +32,8 @@ const PokeList = () => {
         <div  className="poke-list-container">
             <h2>Liste des Pokémon</h2>
             <ul className="poke-list">
-                {pokemons.map((pokemon, index) => (
-                    <PokeCard key={index} pokemon={pokemon} />
+                {pokemons.map((pokemon) => (
+                    <PokeCard key={pokemon.id} pokemon={pokemon} />
                 ))}
             </ul>
         </div>
