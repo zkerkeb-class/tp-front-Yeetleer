@@ -1,10 +1,57 @@
-.btn-add {
-    display: inline-block;
-    background-color: #4CAF50;
+.poke-button-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: center;
+    width: 800px;
+    height: 60px;
+    background-color: rgb(250, 204, 20);
     color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    outline: 4px double black;   /* Bordure extérieure */
+    outline-offset: 2px;
+    padding-left: 30px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
+    position: relative;
+}
+
+.poke-button-add:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: center;
+    width: 800px;
+    height: 60px;
+    background-color: rgb(231, 185, 1);
+    color: #217cc3;
+    outline: 4px solid black;
+    outline-offset: 2px;
+    padding-left: 30px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    position: relative;
+}
+
+.poke-button-add:hover::before {
+    content: "";
+    position: absolute;
+    left: 120px;
+    top: 46%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid #217cc3;
+    animation: blink 0.6s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
 }

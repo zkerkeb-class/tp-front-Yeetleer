@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import usePokemon from "../../hook/usePokemon";
 
 import './index.css';
 import PokeTitle from "./pokeTitle";
@@ -14,12 +13,11 @@ const PokeCard = ({ pokemon }) => {
         <Link to={`/pokemonDetails/${pokemon.id}`}>
         <div className="poke-card">
 
-            <div className={`poke-card-header poke-type-${pokemon.type[0]?.toLowerCase()}`}>
+            <div className={`poke-card-header`}>
                 <PokeTitle name={pokemon.name} />
             </div>
 
-            <div className="poke-image-background">
-                
+            <div className={`poke-image-background poke-type-${pokemon.type[0]?.toLowerCase()}`}>
                 <PokeImage imageUrl={pokemon.image} />
             </div>
 

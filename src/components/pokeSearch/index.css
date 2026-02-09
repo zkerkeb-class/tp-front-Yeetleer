@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.poke-search-bar{
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 8px;
+}
+
+.poke-search-bar-text{
+    font-family: 'Press Start 2P';
+    font-size: 16px; 
+    line-height: 1.8;
+    color: black;
+    outline: 2px solid black;   /* Bordure extérieure */
+    outline-offset: 2px;
+    width: 600px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.poke-search-bar-text:hover{
+    font-family: 'Press Start 2P';
+    font-size: 16px; 
+    line-height: 1.8;
+    color: rgb(71, 71, 71);
+    padding: 8px;
+    width: 600px;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: rgb(194, 194, 194);
+}
+

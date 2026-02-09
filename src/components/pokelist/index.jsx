@@ -4,11 +4,13 @@ import PokeBouton from '../pokePage';
 import { Link } from "react-router";
 
 import './index.css';
+import PokeSearch from "../pokeSearch";
 
 const PokeList = () => {
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
+    const [searchPokemon, setSearchPokemon] = useState("");
 
     useEffect(() => {
         const URL_API = `http://localhost:3000/pokemons?page=${page}`;
@@ -27,20 +29,33 @@ const PokeList = () => {
             });
     }, [page]);
 
+    useEffect(() => {
+    const URL_API = `http://localhost:3000/pokemons?page=${page}`;
+    const URL = searchPokemon ? `http://localhost:3000/pokemons/recherche/${searchPokemon}`: URL_API;
+    fetch(URL)
+        .then(res => res.json())
+        .then(data => {
+            setPokemons(Array.isArray(data) ? data : [data]);
+            setLoading(false);
+        })
+        .catch(() => setLoading(false));
+    }, [searchPokemon, page]);
+
     if (loading) {
         return <p>Chargement...</p>
     }
 
     return (
         <>
-        <Link to="/ajoutPokemon" className="btn-add"> Ajouter un Pokémon</Link>
         <div  className="poke-list-container">
-            <h2>Liste des Pokémon</h2>
+            <h1 className="poke-list-title">POKEDEX NATIONAL : Kanto </h1>
+            <PokeSearch value={searchPokemon} onChange={(val) => {setSearchPokemon(val); setPage(1);}} />
             <ul className="poke-list">
                 {pokemons.map((pokemon) => (
                     <PokeCard key={pokemon.id} pokemon={pokemon} />
                 ))}
             </ul>
+            <Link to="/ajoutPokemon" className="poke-button-add">Vous avez capturé un nouveau Pokémon</Link>
             <PokeBouton page={page} setPage={setPage} suiteListe={pokemons.length === 20} />
         </div>
         </>

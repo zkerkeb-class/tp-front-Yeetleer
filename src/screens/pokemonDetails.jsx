@@ -69,7 +69,7 @@ const PokemonDetails = () => {
             <form onSubmit={updatePokemon} className="edit-form">
                 <h1>Modifier {pokemon.name?.french}</h1>
                 <div className="form-group">
-                    <label>Nom :</label>
+                    <label>Renommer votre Pokémon :</label>
                     <input 
                         type="text" 
                         value={pokemonEdition.name?.french} 
@@ -78,7 +78,7 @@ const PokemonDetails = () => {
                 </div>
                 <div className="form-actions">
                         <div className="form-group">
-                            <label>Points de Vie (HP) :</label>
+                            <label>PV :</label>
                             <input 
                                 type="number" 
                                 value={pokemonEdition.base?.HP} 
@@ -138,20 +138,27 @@ const PokemonDetails = () => {
     }
     else {
         pokemon_details = (
-            <div>
-                <h1>{pokemon.name?.french}</h1>
-                <img src={pokemon.image} alt={pokemon.name?.french} style={{width: '200px'}} />
-                <p>Statistique de base :</p>
-                <div className="stats">
-                    <p>PV : {pokemon.base?.HP}</p>
-                    <p>Attaque : {pokemon.base?.Attack}</p>
-                    <p>Défense : {pokemon.base?.Defense}</p>
-                    <p>Attaque Spécial : {pokemon.base?.SpecialAttack}</p>
-                    <p>Défense Spécial : {pokemon.base?.SpecialDefense}</p>
-                    <p>Vitesse : {pokemon.base?.Speed}</p>
+            <div className="poke-detail">
+                <h1 className="poke-detail-name">{pokemon.name?.french}</h1>
+                <div className="poke-detail-types">
+                    {pokemon.type?.map((t) => (
+                        <span key={t} className={`poke-type-badge poke-type-${t.toLowerCase()}`}>
+                            {t}
+                        </span>
+                    ))}
                 </div>
-                <button onClick={() => {setPokemonEdition(pokemon); setEditing(true);}}>Modifier les infos</button>
-                <button className="delete-poke-button" onClick={() => setShowModal(true)}>Supprimer le Pokémon</button>
+                <img className="poke-detail-img" src={pokemon.image} alt={pokemon.name?.french} />
+                <h3 className="stats-title">Statistique de base :</h3>
+                <div className="stats">
+                    <p><span>PV</span> <span>{pokemon.base?.HP}</span></p>
+                    <p><span>Attaque</span> <span>{pokemon.base?.Attack}</span></p>
+                    <p><span>Défense</span> <span>{pokemon.base?.Defense}</span></p>
+                    <p><span>Attaque Spécial</span> <span>{pokemon.base?.SpecialAttack}</span></p>
+                    <p><span>Défense Spécial</span> <span>{pokemon.base?.SpecialDefense}</span></p>
+                    <p><span>Vitesse</span> <span>{pokemon.base?.Speed}</span></p>
+                </div>
+                <button className="edit-poke-button" onClick={() => {setPokemonEdition(pokemon); setEditing(true);}}>Modifier les EV du Pokémon</button>
+                <button className="delete-poke-button" onClick={() => setShowModal(true)}>Relâcher le Pokémon</button>
                 <ModalConfirmation openModal={showModal} cancelDeletion={() => setShowModal(false)} confirmDeletion={deletePokemon} pokemonName={pokemon?.name?.french} />
             </div>
         );
@@ -160,8 +167,7 @@ const PokemonDetails = () => {
     return (
         <div>
             {pokemon_details}
-            <Link to="/">Retour à la liste des Pokémon</Link>
-
+            <Link className="back-list-button" to="/">Retour à la liste des Pokémon</Link>
         </div>
     );
     
