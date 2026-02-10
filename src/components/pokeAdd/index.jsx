@@ -21,7 +21,7 @@ const pokeAdd = () => {
     });
 
 const handleType = (index, value) => {
-    // On crée une copie du tableau de types actuel (ou un tableau vide s'il n'existe pas)
+    // On crée une copie du tableau de types actuel
     const updatedTypes = [...(newPoke.type || [])];
 
     if (value === "") {
@@ -32,8 +32,7 @@ const handleType = (index, value) => {
         updatedTypes[index] = value;
     }
 
-    // On nettoie le tableau : on enlève les doublons et les valeurs vides
-    // .filter(Boolean) enlève les trous, Set enlève les doublons
+    // On enlève les doublons et les valeurs vides
     const cleanTypes = [...new Set(updatedTypes.filter(Boolean))].slice(0, 2);
 
     // On met à jour l'objet global
@@ -54,7 +53,7 @@ const handleType = (index, value) => {
             });
 
             if (response.ok) {
-                alert("Pokémon ajouté avec succès !");
+                alert("Le Pokémon a été capturé !");
                 navigate('/');
             }
         } catch (error) {
@@ -64,45 +63,48 @@ const handleType = (index, value) => {
 
     return (
         <div className="add-pokemon-container">
-            <h1>Quel est le nouveau Pokémon ?</h1>
-            <form onSubmit={handleSubmit}>
+            <h1 className="add-pokemon-title">Quel est ce Pokémon !</h1>
+            <form className="info-form" onSubmit={handleSubmit}>
                 <input 
+                    className="input-bar"
                     type="number" placeholder="ID du Pokémon" required
                     onChange={(e) => setNewPoke({...newPoke, id: Number(e.target.value)})} 
                 />
-                <input 
+                <input
+                    className="input-bar"
                     type="text" placeholder="Nom du Pokémon" required
                     onChange={(e) => setNewPoke({...newPoke, name: {...newPoke.name, french: e.target.value}})} 
                 />
 
-                <div className="types-group">
-                    <label>Types du Pokémon:</label>
-                    <select required onChange={(e) => handleType(0, e.target.value)}>
+                <div>
+                    <label classname>Types du Pokémon:</label>
+                    <select className="input-bar" required onChange={(e) => handleType(0, e.target.value)}>
                         <option value="">Type 1 (obligatoire)</option>
                         {POKEMON_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
 
-                    <select onChange={(e) => handleType(1, e.target.value)}>
+                    <select className="input-bar" onChange={(e) => handleType(1, e.target.value)}>
                         <option value="">Type 2 (facultatif)</option>
                         {POKEMON_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
                 </div>
                 
-                <input 
+                <input
+                    className="input-bar"
                     type="text" placeholder="URL de l'image" 
                     onChange={(e) => setNewPoke({...newPoke, image: e.target.value})} 
                 />
                 
-                <h3>Statistiques de base</h3>
+                <h3>Statistiques de base :</h3>
                 <div className="stats-grid">
-                    <input type="number" placeholder="PV" required onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, HP: Number(e.target.value)}})} /> <br/>
-                    <input type="number" placeholder="Attaque" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, Attack: Number(e.target.value)}})} /> <br/>
-                    <input type="number" placeholder="Défense" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, Defense: Number(e.target.value)}})} /> <br/>
-                    <input type="number" placeholder="Attaque Spéciale" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, SpecialAttack: Number(e.target.value)}})} /> <br/>
-                    <input type="number" placeholder="Défense Spéciale" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, SpecialDefense: Number(e.target.value)}})} /> <br/>
-                    <input type="number" placeholder="Vitesse" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, Speed: Number(e.target.value)}})} /> <br/>
+                    <input className="input-bar" type="number" placeholder="PV" required onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, HP: Number(e.target.value)}})} /> <br/>
+                    <input className="input-bar" type="number" placeholder="Attaque" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, Attack: Number(e.target.value)}})} /> <br/>
+                    <input className="input-bar" type="number" placeholder="Défense" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, Defense: Number(e.target.value)}})} /> <br/>
+                    <input className="input-bar" type="number" placeholder="Attaque Spéciale" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, SpecialAttack: Number(e.target.value)}})} /> <br/>
+                    <input className="input-bar" type="number" placeholder="Défense Spéciale" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, SpecialDefense: Number(e.target.value)}})} /> <br/>
+                    <input className="input-bar" type="number" placeholder="Vitesse" onChange={(e) => setNewPoke({...newPoke, base: {...newPoke.base, Speed: Number(e.target.value)}})} /> <br/>
                 </div>
-                <button type="submit">Créer le Pokémon</button>
+                <button className="poke-create-button" type="submit">1...2...3... *clic* Taadaa !</button>
             </form>
         </div>
     );

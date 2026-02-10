@@ -55,7 +55,7 @@ const PokeList = () => {
                     <PokeCard key={pokemon.id} pokemon={pokemon} />
                 ))}
             </ul>
-            <Link to="/ajoutPokemon" className="poke-button-add">Vous avez capturé un nouveau Pokémon</Link>
+            <Link to="/ajoutPokemon" className="poke-button-add">Capturer un nouveau Pokémon</Link>
             <PokeBouton page={page} setPage={setPage} suiteListe={pokemons.length === 20} />
         </div>
         </>

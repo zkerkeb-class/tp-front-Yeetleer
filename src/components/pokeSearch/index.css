@@ -11,7 +11,7 @@
     font-size: 16px; 
     line-height: 1.8;
     color: black;
-    outline: 2px solid black;   /* Bordure extérieure */
+    outline: 2px solid black;
     outline-offset: 2px;
     width: 600px;
     padding: 8px;

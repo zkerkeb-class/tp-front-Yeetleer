@@ -36,7 +36,7 @@ const PokemonDetails = () => {
             if (response.ok) {
                 setPokemon(pokemonEdition);
                 setEditing(false);
-                alert("Modifications enregistrées !");
+                alert("Le Pokémon a bien été modifié !");
             }
         } catch (error) {
             console.error("Erreur:", error);
@@ -50,7 +50,7 @@ const PokemonDetails = () => {
             });
 
             if (response.ok) {
-                alert("Le Pokémon a été supprimé !");
+                alert("Le Pokémon a été relâché !");
                 navigate('/');
             }
         } catch (error) {
@@ -70,7 +70,8 @@ const PokemonDetails = () => {
                 <h1>Modifier {pokemon.name?.french}</h1>
                 <div className="form-group">
                     <label>Renommer votre Pokémon :</label>
-                    <input 
+                    <input
+                        className="edit-bar"
                         type="text" 
                         value={pokemonEdition.name?.french} 
                         onChange={(e) => setPokemonEdition({...pokemonEdition, name: {...pokemonEdition.name, french: e.target.value}})}
@@ -79,7 +80,8 @@ const PokemonDetails = () => {
                 <div className="form-actions">
                         <div className="form-group">
                             <label>PV :</label>
-                            <input 
+                            <input
+                                className="edit-bar"
                                 type="number" 
                                 value={pokemonEdition.base?.HP} 
                                 onChange={(e) => setPokemonEdition({...pokemonEdition, base: {...pokemonEdition.base, HP: Number(e.target.value)}})}
@@ -88,7 +90,8 @@ const PokemonDetails = () => {
 
                         <div className="form-group">
                             <label>Attaque :</label>
-                            <input 
+                            <input
+                                className="edit-bar"
                                 type="number" 
                                 value={pokemonEdition.base?.Attack} 
                                 onChange={(e) => setPokemonEdition({...pokemonEdition, base: {...pokemonEdition.base, Attack: Number(e.target.value)}})}
@@ -97,7 +100,8 @@ const PokemonDetails = () => {
 
                         <div className="form-group">
                             <label>Défense :</label>
-                            <input 
+                            <input
+                                className="edit-bar"
                                 type="number" 
                                 value={pokemonEdition.base?.Defense} 
                                 onChange={(e) => setPokemonEdition({...pokemonEdition, base: {...pokemonEdition.base, Defense: Number(e.target.value)}})}
@@ -106,7 +110,8 @@ const PokemonDetails = () => {
 
                         <div className="form-group">
                             <label>Attaque Spéciale :</label>
-                            <input 
+                            <input
+                                className="edit-bar"
                                 type="number" 
                                 value={pokemonEdition.base?.SpecialAttack} 
                                 onChange={(e) => setPokemonEdition({...pokemonEdition, base: {...pokemonEdition.base, SpecialAttack: Number(e.target.value)}})}
@@ -115,7 +120,8 @@ const PokemonDetails = () => {
 
                         <div className="form-group">
                             <label>Défense Spéciale :</label>
-                            <input 
+                            <input
+                                className="edit-bar"
                                 type="number" 
                                 value={pokemonEdition.base?.SpecialDefense} 
                                 onChange={(e) => setPokemonEdition({...pokemonEdition, base: {...pokemonEdition.base, SpecialDefense: Number(e.target.value)}})}
@@ -124,14 +130,17 @@ const PokemonDetails = () => {
 
                         <div className="form-group">
                             <label>Vitesse :</label>
-                            <input 
+                            <input
+                                className="edit-bar"
                                 type="number" 
                                 value={pokemonEdition.base?.Speed} 
                                 onChange={(e) => setPokemonEdition({...pokemonEdition, base: {...pokemonEdition.base, Speed: Number(e.target.value)}})}
                             />
                         </div>
-                    <button type="submit">Sauvegarder</button>
-                    <button type="button" onClick={() => setEditing(false)}>Annuler</button>
+                    <div className="form-buttons-container">
+                        <button className="save-edition-button" type="submit">Sauvegarder</button>
+                        <button className="cancel-edition-button" type="button" onClick={() => setEditing(false)}>Annuler</button>
+                    </div>
                 </div>
             </form>
         );

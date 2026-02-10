@@ -8,17 +8,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999;
+    z-index: 999;
 }
 
 .modal-content {
     background-color: white;
-    padding: 20px;
+    width: 800px;
+    padding: 40px;
     border-radius: 10px;
+    font-size: 18px;
     color: black;
     text-align: center;
-    min-width: 300px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 4px solid black;
 }
 
 .modal-buttons {
@@ -28,6 +29,86 @@
 }
 
 .modal-delete-button {
-    background-color: #ff4d4d;
-    color: white;
+    background-color: rgb(243, 43, 43);
+    border-radius: 8px;
+    margin: 10px;
+    height: 50px;
+    width: 400px;
+    outline: 2px solid black;
+    outline-offset: 2px;
+    text-shadow: 
+         2px  2px 0 #000, 
+         3px  3px 0 #000,
+         4px  4px 0 #000;
+    position: relative;
+}
+
+.modal-delete-button:hover{
+    background-color: rgb(172, 10, 10);
+    border-radius: 8px;
+    text-shadow: 
+         2px  2px 0 #000, 
+         3px  3px 0 #000,
+         4px  4px 0 #000;
+}
+
+.modal-delete-button:hover::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid white;
+    animation: blink 0.6s infinite;
+}
+
+
+.modal-cancel-button {
+    background-color: rgb(90, 90, 90);
+    border-radius: 8px;
+    margin: 10px;
+    height: 50px;
+    width: 400px;
+    outline: 2px solid black;
+    outline-offset: 2px;
+    text-shadow: 
+         2px  2px 0 #000, 
+         3px  3px 0 #000,
+         4px  4px 0 #000;
+    position: relative;
+}
+
+.modal-cancel-button:hover{
+    background-color: rgb(58, 58, 58);
+    border-radius: 8px;
+    text-shadow: 
+         2px  2px 0 #000, 
+         3px  3px 0 #000,
+         4px  4px 0 #000;
+}
+
+.modal-cancel-button:hover::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid white;
+    animation: blink 0.6s infinite;
+}
+
+
+
+@keyframes blink {
+    0% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
 }
