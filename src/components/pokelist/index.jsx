@@ -5,6 +5,7 @@ import { Link } from "react-router";
 
 import './index.css';
 import PokeSearch from "../pokeSearch";
+import selectSound from "../../assets/sounds/select_button.mp3";
 
 const PokeList = () => {
     const [pokemons, setPokemons] = useState([]);
@@ -41,6 +42,12 @@ const PokeList = () => {
         .catch(() => setLoading(false));
     }, [searchPokemon, page]);
 
+    const playSelect = () => {
+        const audio = new Audio(selectSound); 
+        audio.volume = 0.8;
+        audio.play();
+    }
+
     if (loading) {
         return <p>Chargement...</p>
     }
@@ -52,10 +59,10 @@ const PokeList = () => {
             <PokeSearch value={searchPokemon} onChange={(val) => {setSearchPokemon(val); setPage(1);}} />
             <ul className="poke-list">
                 {pokemons.map((pokemon) => (
-                    <PokeCard key={pokemon.id} pokemon={pokemon} />
+                    <PokeCard key={pokemon.id} pokemon={pokemon} onClick={playSelect} />
                 ))}
             </ul>
-            <Link to="/ajoutPokemon" className="poke-button-add">Capturer un nouveau Pokémon</Link>
+            <Link to="/ajoutPokemon" className="poke-button-add" onClick={playSelect}>Capturer un nouveau Pokémon</Link>
             <PokeBouton page={page} setPage={setPage} suiteListe={pokemons.length === 20} />
         </div>
         </>

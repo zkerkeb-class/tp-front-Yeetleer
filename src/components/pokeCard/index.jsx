@@ -4,13 +4,20 @@ import { Link } from "react-router";
 import './index.css';
 import PokeTitle from "./pokeTitle";
 import PokeImage from "./pokeImage";
+import selectSound from "../../assets/sounds/select_button.mp3";
 
 const PokeCard = ({ pokemon }) => {
 
     const statsArray = Object.entries(pokemon.base);
 
+    const playSelect = () => {
+        const audio = new Audio(selectSound); 
+        audio.volume = 0.8;
+        audio.play();
+    }
+
     return (
-        <Link to={`/pokemonDetails/${pokemon.id}`}>
+        <Link to={`/pokemonDetails/${pokemon.id}`} onClick={playSelect}>
         <div className="poke-card">
 
             <div className={`poke-card-header`}>

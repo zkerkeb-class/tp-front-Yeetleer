@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 import './index.css';
+import selectSound from "../../assets/sounds/select_button.mp3";
+import catchSound from "../../assets/sounds/catch.mp3";
 
 const POKEMON_TYPES = [
     "Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", 
@@ -57,11 +59,24 @@ const handleType = (index, value) => {
 
             if (response.ok) {
                 toast.success("Le Pokémon a été capturé !");
+                playCatch();
                 navigate('/');
             }
         } catch (error) {
             toast.error("Le Pokémon s'est échappé !");
         }
+    };
+
+    const playSelect = () => {
+        const audio = new Audio(selectSound); 
+        audio.volume = 0.8;
+        audio.play();
+    };
+
+    const playCatch = () => {
+        const audio = new Audio(catchSound); 
+        audio.volume = 0.6;
+        audio.play();
     };
 
     return (
@@ -80,13 +95,13 @@ const handleType = (index, value) => {
                 />
 
                 <div>
-                    <label classname>Types du Pokémon:</label>
-                    <select className="input-bar" required onChange={(e) => handleType(0, e.target.value)}>
+                    <label>Types du Pokémon:</label>
+                    <select className="input-bar" required onChange={(e) => handleType(0, e.target.value)} onClick={playSelect}>
                         <option value="">Type 1 (obligatoire)</option>
                         {POKEMON_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
 
-                    <select className="input-bar" onChange={(e) => handleType(1, e.target.value)}>
+                    <select className="input-bar" onChange={(e) => handleType(1, e.target.value)} onClick={playSelect}>
                         <option value="">Type 2 (facultatif)</option>
                         {POKEMON_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>

@@ -6,6 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 import ModalConfirmation from '../components/modalConfirmation/index.jsx';
+import selectSound from "../assets/sounds/select_button.mp3";
+import saveSound from "../assets/sounds/level_up.mp3";
+import deleteSound from "../assets/sounds/escape.mp3";
 
 import './pokemonDetails.css';
 
@@ -59,6 +62,24 @@ const PokemonDetails = () => {
         } catch (error) {
             toast.error("Le Pokémon refuse de partir !");
         }
+    };
+
+    const playSelect = () => {
+        const audio = new Audio(selectSound); 
+        audio.volume = 0.8;
+        audio.play();
+    };
+
+    const playSave = () => {
+        const audio = new Audio(saveSound); 
+        audio.volume = 0.8;
+        audio.play();
+    }
+
+    const playDelete = () => {
+        const audio = new Audio(deleteSound); 
+        audio.volume = 0.8;
+        audio.play();
     };
 
     if (!pokemon){
@@ -141,8 +162,8 @@ const PokemonDetails = () => {
                             />
                         </div>
                     <div className="form-buttons-container">
-                        <button className="save-edition-button" type="submit">Sauvegarder</button>
-                        <button className="cancel-edition-button" type="button" onClick={() => setEditing(false)}>Annuler</button>
+                        <button className="save-edition-button" type="submit" onClick={playSave}>Sauvegarder</button>
+                        <button className="cancel-edition-button" type="button" onClick={() => {playSelect(); setEditing(false);}}>Annuler</button>
                     </div>
                 </div>
             </form>
@@ -169,9 +190,9 @@ const PokemonDetails = () => {
                     <p><span>Défense Spécial</span> <span>{pokemon.base?.SpecialDefense}</span></p>
                     <p><span>Vitesse</span> <span>{pokemon.base?.Speed}</span></p>
                 </div>
-                <button className="edit-poke-button" onClick={() => {setPokemonEdition(pokemon); setEditing(true);}}>Modifier les EV du Pokémon</button>
-                <button className="delete-poke-button" onClick={() => setShowModal(true)}>Relâcher le Pokémon</button>
-                <ModalConfirmation openModal={showModal} cancelDeletion={() => setShowModal(false)} confirmDeletion={deletePokemon} pokemonName={pokemon?.name?.french} />
+                <button className="edit-poke-button" onClick={() => {playSelect(); setPokemonEdition(pokemon); setEditing(true);}}>Modifier les EV du Pokémon</button>
+                <button className="delete-poke-button" onClick={() => {playSelect(); setShowModal(true);}}>Relâcher le Pokémon</button>
+                <ModalConfirmation openModal={showModal} cancelDeletion={() => {playSelect(); setShowModal(false);}} confirmDeletion={() => {playDelete(); deletePokemon(pokemon.id);}} pokemonName={pokemon?.name?.french} />
             </div>
         );
     }
@@ -179,7 +200,7 @@ const PokemonDetails = () => {
     return (
         <div>
             {pokemon_details}
-            <Link className="back-list-button" to="/">Retour à la liste des Pokémon</Link>
+            <Link className="back-list-button" to="/" onClick={playSelect}>Retour à la liste des Pokémon</Link>
         </div>
     );
     
