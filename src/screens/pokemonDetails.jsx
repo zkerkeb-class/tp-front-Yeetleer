@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import {Link, useParams} from 'react-router';
 import { useNavigate } from 'react-router';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 import ModalConfirmation from '../components/modalConfirmation/index.jsx';
 
@@ -36,10 +39,10 @@ const PokemonDetails = () => {
             if (response.ok) {
                 setPokemon(pokemonEdition);
                 setEditing(false);
-                alert("Le Pokémon a bien été modifié !");
+                toast.success("Le Pokémon a bien été modifié !");
             }
         } catch (error) {
-            console.error("Erreur:", error);
+            toast.error("Le Pokémon a refusé de se faire modifier !");
         }
     };
 
@@ -50,11 +53,11 @@ const PokemonDetails = () => {
             });
 
             if (response.ok) {
-                alert("Le Pokémon a été relâché !");
+                toast.success("Le Pokémon a été relâché !");
                 navigate('/');
             }
         } catch (error) {
-            console.error("Erreur:", error);
+            toast.error("Le Pokémon refuse de partir !");
         }
     };
 

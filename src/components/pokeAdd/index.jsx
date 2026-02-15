@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 import './index.css';
 
@@ -53,11 +56,11 @@ const handleType = (index, value) => {
             });
 
             if (response.ok) {
-                alert("Le Pokémon a été capturé !");
+                toast.success("Le Pokémon a été capturé !");
                 navigate('/');
             }
         } catch (error) {
-            console.error("Erreur ajout:", error);
+            toast.error("Le Pokémon s'est échappé !");
         }
     };
 

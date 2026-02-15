@@ -345,3 +345,9 @@
 .poke-type-badge.poke-type-dark { background-color: #705848; }
 .poke-type-badge.poke-type-steel { background-color: #B8B8D0; }
 .poke-type-badge.poke-type-fairy { background-color: #EE99AC; }
+
+.Toastify__toast {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    border: 3px solid black;
+}
