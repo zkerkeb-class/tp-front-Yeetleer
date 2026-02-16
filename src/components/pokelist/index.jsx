@@ -59,7 +59,7 @@ const PokeList = () => {
             <PokeSearch value={searchPokemon} onChange={(val) => {setSearchPokemon(val); setPage(1);}} />
             <ul className="poke-list">
                 {pokemons.map((pokemon) => (
-                    <PokeCard key={pokemon.id} pokemon={pokemon} onClick={playSelect} />
+                    <PokeCard key={pokemon.id} pokemon={pokemon} />
                 ))}
             </ul>
             <Link to="/ajoutPokemon" className="poke-button-add" onClick={playSelect}>Capturer un nouveau Pokémon</Link>
