@@ -1,11 +1,24 @@
 .poke-list-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-left: 24px;
+}
 
+.poke-list-title {
+    color: rgb(250, 204, 20);
+    text-shadow: 
+        -2px -2px 0 #217cc3,  
+         2px -2px 0 #217cc3,
+        -2px  2px 0 #217cc3,
+         2px  2px 0 #217cc3,
+         4px  3px 0 #3c21c3, 
+         6px  4px 0 #3c21c3,
+         8px  5px 0 #000;
 }
 
 .poke-list{
     display: flex;
     flex-wrap: wrap;
-    gap:8px;
+    gap:24px;
 }

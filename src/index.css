@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #b60101;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -65,4 +65,22 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+/* LA BOITE DE DIALOGUE (Le toast lui-même) */
+.Toastify__toast {
+    font-family: 'Press Start 2P', cursive;
+    width: 400px !important;
+    font-size: 16px !important;
+    border: 2px solid rgb(0, 0, 0) !important; /* Bordure épaisse style GameBoy */
+    border-radius: 0px;      /* On enlève les arrondis modernes */
+    background-color: white !important; /* Gris clair rétro */
+    color: black !important;
+}
+
+/* La barre de progression en bas (on peut la mettre en jaune Pokémon) */
+.Toastify__progress-bar {
+    border: 10px double rgb(45, 45, 45)!important;
+    background: #474747 !important;
 }
