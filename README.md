@@ -1,17 +1,17 @@
 # React + Vite
 
 
-Lien de la vidéo Youtube (version éditée) : https://youtu.be/Y8hS3o7hgX4
-Lien de la vidéo Youtube (version non éditée) : https://youtu.be/LOPGXRBe_0Y
+- Lien de la vidéo Youtube (version éditée) : https://youtu.be/Y8hS3o7hgX4
+- Lien de la vidéo Youtube (version non éditée) : https://youtu.be/LOPGXRBe_0Y
 
 Fonctions/styles supplémentaires de mon site :
 
--La barre de recherche est la fonction supplémentaire au choix que j'ai rajouté
--Il y a un ToastContainer à la place d'une simple 'alert' lors de certaines actions (Ajout, Modification, Suppression)
+- La barre de recherche est la fonction supplémentaire au choix que j'ai rajouté
+- Il y a un ToastContainer à la place d'une simple 'alert' lors de certaines actions (Ajout, Modification, Suppression)
 
--Pokédex réalisé dans une DA rétro et fidèle aux jeux originaux
--Des petits détails sur le design du site, comme le triangle animé lorsqu'on hover sur un cliquable, ou le site qui ressemble      (globalement) à un Pokédex
--Implémentation de sons lors d'actions (Changement de pages, Modifications, Ajout, Suppression etc.)
+- Pokédex réalisé dans une DA rétro et fidèle aux jeux originaux
+- Des petits détails sur le design du site, comme le triangle animé lorsqu'on hover sur un cliquable, ou le site qui ressemble      (globalement) à un Pokédex
+- Implémentation de sons lors d'actions (Changement de pages, Modifications, Ajout, Suppression etc.)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
